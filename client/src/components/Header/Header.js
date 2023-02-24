@@ -125,7 +125,7 @@ class Header extends React.Component {
                       alt="menu"
                     />
                     <ul>
-                      <li><a href="#">HOW IT WORKS</a></li>
+                      <li><Link to = '/how-it-works'>HOW IT WORKS</Link></li>
                       <li><a href="#">PRICING</a></li>
                       <li><a href="#">AGENCY SERVICE</a></li>
                       <li><a href="#">ACTIVE CONTESTS</a></li>

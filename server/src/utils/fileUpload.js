@@ -16,10 +16,10 @@ if (!fs.existsSync(filePath)) {
 }
 
 const storageContestFiles = multer.diskStorage({
-  destination (req, file, cb) {
+  destination (cb) {
     cb(null, filePath);
   },
-  filename (req, file, cb) {
+  filename (file, cb) {
     cb(null, Date.now() + file.originalname);
   },
 });

@@ -1,5 +1,4 @@
 const schems = require('../validationSchemes/schems');
-const ServerError = require('../errors/ServerError');
 const BadRequestError = require('../errors/BadRequestError');
 
 module.exports.validateRegistrationData = async (req, res, next) => {
@@ -11,7 +10,7 @@ module.exports.validateRegistrationData = async (req, res, next) => {
   }
 };
 
-module.exports.validateLogin = async (req, res, next) => {
+module.exports.validateLogin = async (req, next) => {
   const validationResult = await schems.loginSchem.isValid(req.body);
   if (validationResult) {
     next();
@@ -20,7 +19,7 @@ module.exports.validateLogin = async (req, res, next) => {
   }
 };
 
-module.exports.validateContestCreation = (req, res, next) => {
+module.exports.validateContestCreation = (req, next) => {
   const promiseArray = [];
   req.body.contests.forEach(el => {
     promiseArray.push(schems.contestSchem.isValid(el));
