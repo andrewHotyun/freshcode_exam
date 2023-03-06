@@ -1,38 +1,194 @@
-.mainContainer
-  font-family: "Poppins"
-  padding-top: 0px
-  width: 1140px
-  @media(max-width: 992px)
-    width: 95%
-  
+.miniSpan
+  background-color: rgba(55, 125, 255, 0.1)
+  color: #377dff
+  padding: 0.4375rem 0.9375rem
+  border-radius: 2em
+  font-size: .6875rem
+  font-weight: 600
+  letter-spacing: 1px
 
-  .container-space-1  
-  padding:
-    top: 48px
-    bottom: 32px
-    left: 15px
-    right: 15px 
-  line-height: 1.7
+.contentContainer
+  font-family: "Poppins",Helvetica,Arial,sans-serif
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
 
-  .sections
-    margin-top: 50px
+.howWorkSection
+  padding: 5em
+  width: 80%
+  display: flex
+  justify-content: center
+  align-items: center
+  line-height: 1.5
 
-  h1
+.howWorkInfo
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  align-items: flex-start
+
+  &>h1
+    font-size: 2.5rem
+    margin-bottom: 0.5rem
+    line-height: 1.5
     font-weight: 600
-  p
-    color: #77838F
-    font-weight: 500
+    color: black
 
-  ul
-    padding-left: 20px 
-       
-  small
-    font-size: 11px
-    color: #377DFF
-    background: rgba(55,125,255,.1)
-    border-radius: 99px
+  &>p
+    color: #77838f
+    line-height: 1.7
+    letter-spacing: 1px
+    margin-top: 0
+    margin-bottom: 1rem
+    margin: 0 0 10px
+    font-size: 1rem
 
-.ctnContainerWrap
-  width: 1140px
-  @media(max-width: 992px)
-    width: 90%
+  &>a  
+   text-decoration: none
+   color: white
+   background-color: #377dff
+   border-radius: 2em
+   padding: 0.75rem 2rem
+   font-size: 1rem
+   line-height: 1.5
+   margin-top: 15px
+   &:hover
+    transform: translateY(-3px) 
+    box-shadow: -1px 5px 24px 0px rgba(169,193,237,1)
+    transition: all 0.2s ease-in-out
+
+.btnName
+  margin-left: 10px  
+
+.servicesSection
+  width: 80%
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+
+.line
+  width: 100%
+  height: 0
+  border-top: 1px solid #e7eaf3
+
+.imageContainer  
+  height: 80%
+  width: 80%  
+
+.namingStepsSection
+  width: 100%
+  padding: 0 2em 0 2em
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: center
+
+.sectionHeader
+  font-size: 2rem
+  margin: 0.5em 0 0.5em 0
+  color: black
+  
+p 
+  color: #77838f  
+  letter-spacing: 1px 
+
+.namingStepsContainer
+  width: 80%
+  display: flex
+  flex-direction: row
+  justify-content: center
+  align-items: center
+
+.namingStepsList
+  min-width: 300px
+  color: grey
+
+  &>li
+    border: 1px lightgrey solid
+    padding: 1em
+    margin: 1em
+
+.FAQSection
+  width: 90%
+  margin-top: 3em
+  display: flex
+  align-items: start
+
+.FAQCategories
+  width: 20%
+  background-color: #377dff
+  border-radius: 3px
+  padding: 1em 2em
+
+  a
+    text-decoration: none
+    color: #C3D8FF
+    line-height: 3em
+  
+  a:hover
+    color: white
+
+.FAQContent
+  padding: 2em
+
+.categoryTitle
+  padding-left: 0.5em
+  color: #377dff
+  font-weight: bold
+  font-size: x-large
+
+.getStartedSection
+  width: 100%
+  position: relative
+  z-index: 2
+  overflow: hidden
+  background-image: linear-gradient(150deg,#2d1582 0%,#19a0ff 100%)
+  background-repeat: repeat-x
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: center
+
+  &>h3
+    color: #00DFFC
+    font-weight: bold
+    font-size: xx-large
+    margin: 1em 0 0.5em 0
+
+  &>p
+    color: white
+    font-size: x-large
+    line-height: 1.5
+
+  &>span 
+    color: white
+    padding: 10px 15px   
+
+  &>a 
+    border-radius: 5px
+    text-decoration: none
+    text-align: center
+    padding: 1em
+    margin: 1em
+    background-color: white
+    color: black
+    transition: all 0.5s
+    &:hover
+      transform: translateY(-3px) 
+      box-shadow: 1px 4px 5px rgba(255,255,255,0.35)
+
+.getStartedTop
+  max-width: 13rem
+  z-index: -1
+  position: absolute
+  left: 0
+  top: 0
+
+.getStartedBottom
+  max-width: 13rem 
+  z-index: -1
+  position: absolute
+  right: 0
+  bottom: 0
