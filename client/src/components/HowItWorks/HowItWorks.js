@@ -58,23 +58,24 @@ const HowItWorksComponent = () => {
           <h3 className={styles.sectionHeader}>How Do Naming Contests Work?</h3>
           <div className={styles.namingStepsContainer}>
             <img
-              style={{ width: '30em', height: '30em' }}
+              style={{ width: '40em', height: '40em', marginTop: '4em'}}
               src={`${CONSTANTS.STATIC_IMAGES_PATH}/naming-steps-image.png`}
             ></img>
             <ul className={styles.namingStepsList}>
               <li>
-                Fill out your Naming Brief and begin receiving name ideas in
-                minutes
+                <span className={styles.numbers}>1.</span><p>Fill out your Naming Brief and begin receiving name ideas in
+                minutes.</p>
+              </li>
+              <li className={styles.phrase}>
+                <span className={styles.numbers}>2.</span><p>Rate the submissions and provide feedback to creatives.
+                Creatives submit even more names based on your feedback.</p>
+              </li>
+              <li className={styles.phrase}>
+                <span className={styles.numbers}>3.</span><p>Our team helps you test your favorite names with your target
+                audience. We also assist with Trademark screening.</p>
               </li>
               <li>
-                Rate the submissions and provide feedback to creatives.
-                Creatives submit even more names based on your feedback.
-              </li>
-              <li>
-                Our team helps you test your favorite names with your target
-                audience. We also assist with Trademark screening.
-              </li>
-              <li>Pick a Winner. The winner gets paid for their submission.</li>
+                <span className={styles.numbers}>4.</span><p>Pick a Winner. The winner gets paid for their submission.</p></li>
             </ul>
           </div>
         </section>

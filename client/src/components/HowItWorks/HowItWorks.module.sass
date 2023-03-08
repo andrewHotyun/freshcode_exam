@@ -1,3 +1,8 @@
+body
+  width: 100%
+  max-width: 100%
+  overflow-x: hidden
+  
 .miniSpan
   background-color: rgba(55, 125, 255, 0.1)
   color: #377dff
@@ -79,7 +84,7 @@
 
 .namingStepsSection
   width: 100%
-  padding: 0 2em 0 2em
+  padding: 3em 2em 0 2em
   display: flex
   flex-direction: column
   justify-content: space-between
@@ -104,11 +109,27 @@ p
 .namingStepsList
   min-width: 300px
   color: grey
+  padding: 2rem
+  padding-left: 2.5rem
+  border-radius: 0.3125rem
+  
 
   &>li
     border: 1px lightgrey solid
     padding: 1em
     margin: 1em
+    color: #77838f
+    line-height: 1.7
+    margin: 0 0 10px
+    display: flex
+    
+    &>.numbers
+      color: #377dff
+      font-size: 3.5rem
+
+    &>p 
+      margin: 20px 10px 10px 20px
+      
 
 .FAQSection
   width: 90%
