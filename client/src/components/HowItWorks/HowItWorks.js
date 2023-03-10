@@ -58,7 +58,7 @@ const HowItWorksComponent = () => {
           <h3 className={styles.sectionHeader}>How Do Naming Contests Work?</h3>
           <div className={styles.namingStepsContainer}>
             <img
-              style={{ width: '40em', height: '40em', marginTop: '4em'}}
+              style={{ width: '40em', height: '41em', marginTop: '3em'}}
               src={`${CONSTANTS.STATIC_IMAGES_PATH}/naming-steps-image.png`}
             ></img>
             <ul className={styles.namingStepsList}>
@@ -66,11 +66,11 @@ const HowItWorksComponent = () => {
                 <span className={styles.numbers}>1.</span><p>Fill out your Naming Brief and begin receiving name ideas in
                 minutes.</p>
               </li>
-              <li className={styles.phrase}>
+              <li>
                 <span className={styles.numbers}>2.</span><p>Rate the submissions and provide feedback to creatives.
                 Creatives submit even more names based on your feedback.</p>
               </li>
-              <li className={styles.phrase}>
+              <li>
                 <span className={styles.numbers}>3.</span><p>Our team helps you test your favorite names with your target
                 audience. We also assist with Trademark screening.</p>
               </li>
@@ -79,6 +79,7 @@ const HowItWorksComponent = () => {
             </ul>
           </div>
         </section>
+        <hr className={styles.line}></hr>
         <section className={styles.FAQSection}>
           <ul className={styles.FAQCategories}>
             {categories.map((category, i) => (
