@@ -7,12 +7,14 @@ import CONSTANTS from '../../constants';
 import WaysToUse from './WaysToUse/WaysToUse';
 import FAQItem from './FAQItem/FAQItem';
 import categories from './FAQCategories.json';
+import StatInformation from "./StatInformation/StatInformation";
+import Questions from "./Questions/Questions";
 
 const HowItWorksComponent = () => {
   const mapFAQ = (category, i) => (
     <div id={category.shortCategoryTitle} key={i}>
       <h3 className={styles.categoryTitle}>{category.categoryTitle}</h3>
-      <div>
+      <div className={styles.faqs}>
         {category.faqs.map(faq => (
           <FAQItem faq={faq} />
         ))}
@@ -90,7 +92,7 @@ const HowItWorksComponent = () => {
               </li>
             ))}
           </ul>
-          <div className={styles.FAQContent}> {categories.map(mapFAQ)} </div>
+          <div className={styles.FAQContent}>{categories.map(mapFAQ)}</div>
         </section>
         <section className={styles.getStartedSection}>
           <h3>Ready to get started?</h3>
@@ -110,8 +112,8 @@ const HowItWorksComponent = () => {
             src={`${CONSTANTS.STATIC_IMAGES_PATH}/get-started-bottom.png`}
           ></img>
         </section>
-        <section>Stats section</section>
-        <section>Pricing section</section>
+        <StatInformation/>
+        <Questions/>
       </div>
         <Footer/>
       </div>

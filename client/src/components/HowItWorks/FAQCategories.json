@@ -1,11 +1,12 @@
 [
   {
+    "id": 1,
     "categoryTitle": "Launching A Contest",
     "shortCategoryTitle": "launching",
     "faqs": [
       {
         "question": "How long does it take to start receiving submissions?",
-        "answer": "For Naming contests, you will start receiving your submissions within few minutes of launching your contest. Since our creatives are located across the globe, you can expect to receive submissions 24 X 7 throughout the duration of the brainstorming phase ."
+        "answer": "For Naming contests, you will start receiving your submissions within few minutes of launching your contest. Since our creatives are located across the globe, you can expect to receive submissions 24 X 7 throughout the duration of the brainstorming phase."
       },
       {
         "question": "How long do NamingContests last?",
@@ -42,11 +43,12 @@
     ]
   },
   {
+    "id": 2,
     "categoryTitle": "Buying From Marketplace",
     "shortCategoryTitle": "buying",
     "faqs": [
       {
-        "question": "What's included with a DOmain Purchase?",
+        "question": "What's included with a Domain Purchase?",
         "answer": "When you purchase a domain from our premium domain marketplace, you will receive the exact match .com URL, a complimentary logo design (along with all source files), as well as a complimentary Trademark report and Audience Testing if you’re interested in validating your name."
       },
       {
@@ -60,6 +62,7 @@
     ]
   },
   {
+    "id": 3,
     "categoryTitle": "Managed Contests",
     "shortCategoryTitle": "managed",
     "faqs": [
@@ -82,6 +85,7 @@
     ]
   },
   {
+    "id": 4,
     "categoryTitle": "For Creatives",
     "shortCategoryTitle": "creatives",
     "faqs": [
