@@ -9,6 +9,7 @@ import FAQItem from './FAQItem/FAQItem';
 import categories from './FAQCategories.json';
 import StatInformation from "./StatInformation/StatInformation";
 import Questions from "./Questions/Questions";
+import Brands from "./Brands/Brands";
 
 const HowItWorksComponent = () => {
   const mapFAQ = (category, i) => (
@@ -114,6 +115,7 @@ const HowItWorksComponent = () => {
         </section>
         <StatInformation/>
         <Questions/>
+        <Brands/>
       </div>
         <Footer/>
       </div>
