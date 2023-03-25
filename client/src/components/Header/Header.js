@@ -127,6 +127,7 @@ class Header extends React.Component {
                     />
                     <ul>
                       <li><Link to = '/how-it-works'>HOW IT WORKS</Link></li>
+                      <li><Link to ="/button-group">BUTTON GROUP</Link></li>
                       <li><a href="#">PRICING</a></li>
                       <li><a href="#">AGENCY SERVICE</a></li>
                       <li><a href="#">ACTIVE CONTESTS</a></li>
