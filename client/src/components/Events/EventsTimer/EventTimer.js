@@ -21,7 +21,7 @@ const EventsTimer = (props) => {
                 userEvents = [eventData];
             }
             localStorage.setItem(`${userId}`, JSON.stringify(userEvents));
-        }
+        } 
         setEvents(getEvents());
     }, [eventData])
 
