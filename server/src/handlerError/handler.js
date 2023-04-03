@@ -1,6 +1,5 @@
-module.exports = (err, req, res, next) => {
-  console.log(err);
   const {errorsLogger} = require('./error');
+  
   module.exports.errorHandler = (err, req, res, next) => {
     errorsLogger(err);  
   if (err.message ===
@@ -12,9 +11,8 @@ module.exports = (err, req, res, next) => {
   }
   if (!err.message || !err.code) {
     res.status(500).send('Server Error');
-  } 
+  }
   else {
     return res.status(err.code).send(err.message); 
   }
 };
-}
