@@ -5,6 +5,7 @@ const userQueries = require('./queries/userQueries');
 const controller = require('../socketInit');
 const UtilFunctions = require('../utils/functions');
 const CONSTANTS = require('../constants');
+const {moderatorDecision} = require('../utils/moderatorDecision')
 
 module.exports.dataForContest = async (req, res, next) => {
   const response = {};
@@ -31,7 +32,7 @@ module.exports.dataForContest = async (req, res, next) => {
     });
     res.send(response);
   } catch (err) {
-    console.log(err);
+    console.log(err.message);
     next(new ServerError('cannot get contest preferences'));
   }
 };

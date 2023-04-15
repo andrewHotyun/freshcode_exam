@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer'); // Цей рядок підключає бібліотеку Nodemailer для відправки електронної пошти
 
 module.exports.sendMailFromModerator = async (data) => { // Це експортує функцію з модуля з іменем sendMailFromModerator. Ця функція приймає об'єкт data як параметр і повертає обіцянку
-  const {description, email, title} = data; // Цей рядок розгортає об'єкт data і витягує з нього властивості command, email та title
+  const {description, email, title} = data; // Цей рядок розгортає об'єкт data і витягує з нього властивості description, email та title
   const moderatorEmail = 'kapitansoup200047@gmail.com'; // Цей рядок визначає email-адресу модератора
 
     const transporter = nodemailer.createTransport({
