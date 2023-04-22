@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Catalogs', {
+    await queryInterface.createTable('catalogs', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -28,7 +28,7 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Catalogs');
+    await queryInterface.dropTable('catalogs');
   }
 }; 
 // потрібно добавити атрибут userId в модель, коли буду переносити на чистовик
