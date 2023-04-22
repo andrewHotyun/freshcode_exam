@@ -31,4 +31,4 @@ module.exports = {
     await queryInterface.dropTable('Catalogs');
   }
 }; 
-// потрібно добавити userId коли буду переносити
+// потрібно добавити атрибут userId в модель, коли буду переносити на чистовик
