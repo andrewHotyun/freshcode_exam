@@ -38,6 +38,18 @@ module.exports.dataForContest = async (req, res, next) => {
 };
 
 module.exports.getContestById = async (req, res, next) => {
+  const pending = 'pending';
+  const won = 'won';
+  const rejected = 'rejected';
+  const newStatus = 'new';
+  const block = 'block';
+  const typesForCustomer = [pending, won, rejected].filter(Boolean);
+  const typesForModerator = [pending, won, rejected, newStatus, block].filter(Boolean);
+  const typesForCreator = [pending, won, rejected, newStatus, block].filter(Boolean);
+  const creator = req.tokenData.role === CONSTANTS.CREATOR ? { userId: req.tokenData.userId,  status: typesForCreator } : {};
+  const customer = req.tokenData.role === CONSTANTS.CUSTOMER ? { status: typesForCustomer } : {};
+  const moderator = req.tokenData.role === CONSTANTS.MODERATOR ? { status: typesForModerator } : {};
+  const offersTypes = [creator, customer, moderator].filter(Boolean);
   try {
     let contestInfo = await db.Contests.findOne({
       where: { id: req.headers.contestid },
@@ -171,7 +183,10 @@ const resolveOffer = async (
   const updatedOffers = await contestQueries.updateOfferStatus({
     status: db.sequelize.literal(` CASE
             WHEN "id"=${ offerId } THEN '${ CONSTANTS.OFFER_STATUS_WON }'
-            ELSE '${ CONSTANTS.OFFER_STATUS_REJECTED }'
+            WHEN "status"='${ CONSTANTS.OFFER_STATUS_NEW }' THEN '${ CONSTANTS.OFFER_STATUS_BLOCK }'
+            WHEN "status"='${ CONSTANTS.OFFER_STATUS_PENDING }' THEN '${ CONSTANTS.OFFER_STATUS_REJECTED }'
+            WHEN "status"='${ CONSTANTS.OFFER_STATUS_BLOCK }' THEN '${ CONSTANTS.OFFER_STATUS_BLOCK }'
+            ELSE '${ CONSTANTS.OFFER_STATUS_REJECTED}'
             END
     `),
   }, {
@@ -179,17 +194,49 @@ const resolveOffer = async (
   }, transaction);
   transaction.commit();
   const arrayRoomsId = [];
+  let updatedOffer = null;
   updatedOffers.forEach(offer => {
     if (offer.status === CONSTANTS.OFFER_STATUS_REJECTED && creatorId !==
       offer.userId) {
       arrayRoomsId.push(offer.userId);
+    } else {
+      if (offer.status === CONSTANTS.OFFER_STATUS_WON) {
+        updatedOffer = offer;
+      }
     }
   });
   controller.getNotificationController().emitChangeOfferStatus(arrayRoomsId,
     'Someone of yours offers was rejected', contestId);
   controller.getNotificationController().emitChangeOfferStatus(creatorId,
     'Someone of your offers WIN', contestId);
-  return updatedOffers[ 0 ].dataValues;
+  return updatedOffer;
+};
+
+
+const allowOffer = async (offerId, email, title, command) => {
+  const updatedOffers = await contestQueries.updateOffer(
+    { status: CONSTANTS.OFFER_STATUS_PENDING }, { id: offerId });
+
+    await moderatorDecision({
+      command,
+      email,
+      title
+    });
+
+    return updatedOffers; 
+};
+
+const blockOffer = async (offerId, email, title, command) => {
+  const updatedOffers = await contestQueries.updateOffer(
+    { status: CONSTANTS.OFFER_STATUS_BLOCK }, { id: offerId });
+
+    await moderatorDecision({
+      command,
+      email,
+      title
+    });
+
+    return updatedOffers; 
 };
 
 module.exports.setOfferStatus = async (req, res, next) => {
@@ -214,11 +261,29 @@ module.exports.setOfferStatus = async (req, res, next) => {
       next(err);
     }
   }
+  if (req.body.command === 'pending') {
+    const {email, title, command} = req.body;
+    try {                                              
+      const updatedOffers = await allowOffer(offerId, email, title, command);
+      res.send(updatedOffers);
+      } catch (err) {
+      next(err);
+    }
+  }
+  if (req.body.command === 'block') {
+    try {
+      const {email, title, command} = req.body;
+      const updatedOffers = await blockOffer(offerId, email, title, command);
+      res.send(updatedOffers);
+      } catch (err) {
+      next(err);
+    }
+  }
 };
 
 module.exports.getCustomersContests = (req, res, next) => {
   db.Contests.findAll({
-    where: { status: req.headers.status, userId: req.tokenData.userId },
+    where: req.tokenData.role === CONSTANTS.MODERATOR ? { status: req.headers.status } : {status: req.headers.status, userId: req.tokenData.userId},
     limit: req.body.limit,
     offset: req.body.offset ? req.body.offset : 0,
     order: [['id', 'DESC']],
