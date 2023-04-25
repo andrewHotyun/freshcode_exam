@@ -21,7 +21,7 @@ const Home = (props) => {
     }, 3000);
     return () => {
       setStyle(styles.headline__static);
-      clearInterval(timeout.current);
+      clearInterval(timeout.current); 
     };
   }, [index]);
 
